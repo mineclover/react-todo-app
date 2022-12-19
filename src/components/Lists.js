@@ -1,24 +1,9 @@
 import React from 'react';
 
 function Lists({ todoData, setTodoData }) {
-	const btnStyle = {
-		color: '#fff',
-		border: 'none',
-		padding: '5px 9px',
-		borderRadius: '50%',
-		cursor: 'pointer',
-		float: 'right',
-	};
-
 	const listStyle = completed => {
 		return {
-			backgroundColor: '#fff',
-			padding: '10px',
-			borderBottom: '1px #ccc dotted',
 			textDecoration: completed ? 'line-through' : 'none',
-			display: 'flex',
-			justifyContent: 'space-between',
-			alignItems: 'center',
 		};
 	};
 	const handleClick = id => {
@@ -37,15 +22,21 @@ function Lists({ todoData, setTodoData }) {
 	};
 
 	return (
-		<div>
+		<div className="flex flex-col  items-center w-full">
 			{todoData.map(data => (
-				<div style={listStyle(data.completed)} key={data.id}>
-					<input type="checkbox" defaultChecked={data.completed} onChange={() => handleCompleteChange(data.id)} />
-					{data.title}
+				<div
+					style={listStyle(data.completed)}
+					key={data.id}
+					className="w-full  text-gray-600 bg-gray-100 border rounded shadow mb-4"
+				>
+					<div className="flex items-center justify-between p-2">
+						<input type="checkbox" defaultChecked={data.completed} onChange={() => handleCompleteChange(data.id)} />
+						{data.title}
 
-					<button style={btnStyle} onClick={() => handleClick(data.id)}>
-						X
-					</button>
+						<button onClick={() => handleClick(data.id)} className="">
+							X
+						</button>
+					</div>
 				</div>
 			))}
 		</div>
