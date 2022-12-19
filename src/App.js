@@ -30,11 +30,15 @@ export default function App() {
 		setTodoData(value => [...value, newTodoData]);
 		setValue('');
 	};
+	const handleRemove = () => {
+		setTodoData([]);
+	};
 
 	return (
 		<div className="flex items-center justify-center w-screen h-screen bg-blue-100  ">
 			<div className="w-full p-6 m-4 bg-white rounded shadow md:max-3/4 md:w-3/4 lg:w-3/4 lg:max-w-lg">
 				<h1 className="font-bold underline">Todo List</h1>
+				<button onClick={handleRemove}>Remove</button>
 				<div className="flex justify-between mb-3 w-full">
 					<Lists todoData={todoData} setTodoData={setTodoData} />
 				</div>
